@@ -1,0 +1,43 @@
+{
+  "name": "space-boardgame",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "main": "server/index.ts",
+  "scripts": {
+    "start": "source .env && node $SERVER_BUILD_DIR/server",
+    "build": "npm run build:client && npm run build:server",
+    "build:client": "source .env && vite build -c config/vite.client.config.js --outDir $CLIENT_BUILD_DIR",
+    "build:server": "source .env && tsc -p ./config/tsconfig.server.json --outdir $SERVER_BUILD_DIR",
+    "dev:client": "vite -c config/vite.client.config.js",
+    "dev:server": "NODE_ENV=development tsx watch --tsconfig ./config/tsconfig.server.json ./server/index.ts",
+    "check:types": "tsc --noEmit",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Igor Karpinskiy <ik@altimho.com>",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@trpc/client": "^10.9.0",
+    "@types/koa": "^2.13.5",
+    "@types/koa__router": "^12.0.0",
+    "@types/koa-proxy": "^1.0.4",
+    "@types/koa-static": "^4.0.2",
+    "@types/koa-websocket": "^5.0.7",
+    "@types/ws": "^8.5.4",
+    "prettier": "^2.8.3",
+    "tsx": "^3.12.2",
+    "typescript": "^4.9.4",
+    "vite": "^4.0.4"
+  },
+  "dependencies": {
+    "@trpc/server": "^10.9.0",
+    "@koa/router": "^12.0.0",
+    "dotenv": "^16.0.3",
+    "koa": "^2.14.1",
+    "koa-proxy": "^1.0.0-alpha.3",
+    "koa-static": "^5.0.0",
+    "koa-websocket": "^7.0.0",
+    "trpc-koa-adapter": "^1.1.2",
+    "ws": "^8.12.0"
+  }
+}
